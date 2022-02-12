@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:mr_mangowalla_woocommerce/pages/dashboard.dart';
 
@@ -16,7 +14,9 @@ class _productDescriptionState extends State<productDescription> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Color(0xFFF09439),),
+        iconTheme: IconThemeData(
+          color: Color(0xFFF09439),
+        ),
         title: Text(
           '  Mr. Mangowalla',
           style: TextStyle(
@@ -66,32 +66,7 @@ class _productDescriptionState extends State<productDescription> {
                     ),
                   )),
               Positioned(
-                bottom: 0,
-                left: 0,
-                child: FlatButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => Dashboard()));
-                    },
-                    child: Container(
-                      width: MediaQuery.of(context).size.width * 0.80,
-                      height: 40,
-                      margin: EdgeInsets.all(15),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(12)),
-                        border: Border.all(width: 1, color: Colors.white70),
-                        color: Color(0xFFF09439),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Show Now',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    )),
-              ),
-              Positioned(
-                top: MediaQuery.of(context).size.height*0.42,
+                top: MediaQuery.of(context).size.height * 0.42,
                 left: 4,
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.92,
@@ -179,6 +154,27 @@ class _productDescriptionState extends State<productDescription> {
           ),
         ),
       ),
+      bottomNavigationBar: FlatButton(
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (_) => Dashboard()));
+          },
+          child: Container(
+            width: MediaQuery.of(context).size.width * 0.80,
+            height: 40,
+            margin: EdgeInsets.all(15),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(12)),
+              border: Border.all(width: 1, color: Colors.white70),
+              color: Color(0xFFF09439),
+            ),
+            child: Center(
+              child: Text(
+                'Show Now',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          )),
     );
   }
 }

@@ -155,6 +155,7 @@ class _LoginPageState extends State<LoginPage> {
         ),
       );
 
+  late bool loginstatas;
   Future<void> login() async {
     if (_email.text.isNotEmpty && _pass.text.isNotEmpty) {
       var response = await http.post(
@@ -166,7 +167,6 @@ class _LoginPageState extends State<LoginPage> {
       var jsonrespons = json.decode(response.body);
       print(" data from server Customer data");
       print(jsonrespons);
-      bool loginstatas;
       for (var cd in jsonrespons) {
         Login data = new Login(
           success: cd["success"],
@@ -174,14 +174,13 @@ class _LoginPageState extends State<LoginPage> {
           error: cd["error"],
         );
         loginstatas = (data.success) as bool;
-        print(loginstatas);
-        if (loginstatas == true) {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (_) => Dashboard()));
-        } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text("Email or password! somthing wrong.")));
-        }
+      }
+      print(loginstatas);
+      if (loginstatas == true) {
+        Navigator.push(context, MaterialPageRoute(builder: (_) => Dashboard()));
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("Email or password! somthing wrong.")));
       }
     } else {
       ScaffoldMessenger.of(context)
